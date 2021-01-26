@@ -9,6 +9,7 @@ public class Cat extends Animal
     {
         super(name);
     }
+    
     public void setNumLives(int lives)
     {
         this.numLives = lives;
@@ -22,14 +23,14 @@ public class Cat extends Animal
     //method for the kill
     public void kill()
     {
-        if (numLives > 0)
+        if (numLives == 0)
         {
-            numLives --;
-            System.out.println("Ouch!");
+            System.out.println("Dead");
         }
         else
         {
-            System.out.println("Dead");
+            numLives --;
+            System.out.println("Ouch!");
         }
     }
 }

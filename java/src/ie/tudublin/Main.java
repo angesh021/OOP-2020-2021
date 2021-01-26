@@ -26,7 +26,8 @@ public class Main
         // 2. garfield, Garfield 
 
         //creating new instance cat
-        Animal ginger = new Cat("Ginger");
+        Cat ginger = new Cat("Ginger");
+        System.out.println(ginger);
 
         //call the kill method on ginger
         while(ginger.getNumLives() > 0)
