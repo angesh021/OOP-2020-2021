@@ -10,6 +10,7 @@ public class Cat extends Animal
         super(name);
     }
     
+    //public accessors set and get
     public void setNumLives(int lives)
     {
         this.numLives = lives;

@@ -22,7 +22,6 @@ public class Main
 
         // What will get printed out??
 
-        // 1. topcat, Garfield
         // 2. garfield, Garfield 
 
         //creating new instance cat
