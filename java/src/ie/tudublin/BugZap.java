@@ -2,11 +2,7 @@ package ie.tudublin;
 
 import processing.core.PApplet;
 
-import java.applet.*;
-import java.io.*;
-import java.net.URL;
-import javax.sound.sampled.*;
-import javax.swing.*;
+
 
 
 
