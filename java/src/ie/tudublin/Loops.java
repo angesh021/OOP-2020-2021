@@ -28,7 +28,7 @@ public class Loops extends PApplet {
         colorMode(HSB);
     }
 
-    float offset = 50;
+    float offset = 0;
 
     public void draw() {
         background(0);
@@ -113,16 +113,15 @@ public class Loops extends PApplet {
 
            case 5:
            {
-               background(50,255,255);
               float w = 200;
               float h = 50;
-              rectMode(CENTER);
+              rectMode(CENTER); 
               if(mouseX >cx - (w/2) && mouseY > cy-(h/2) && mouseY<cy +(h/2))
               {
                   fill(50, 255, 255);
                   rect(0, 0, cx, cy);
               }
-              else if(mouseX > cx && mouseY<cy)
+              else if(mouseX > cx && mouseY < cy)
               {
                   rect(cx, 0, cx, cy);
               }
@@ -169,7 +168,8 @@ public class Loops extends PApplet {
 
             case 8:
             {
-                int numCircles = (int) mouseX/100;
+                offset += (mouseX/100);
+                int numCircles = 20;
                 float wi =width/(float)numCircles;
                 float cogap = 255/(numCircles + numCircles);
                 for(int i=0; i<numCircles; i++)
