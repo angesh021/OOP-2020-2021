@@ -15,7 +15,7 @@ public class Rainfall extends PApplet {
 
     public void settings() 
     {
-        size(500, 500);     
+        size(1000, 1000);     
         
         float f = map1(2,0,10,0, width);
         println(f); // should print 100
@@ -158,41 +158,39 @@ public class Rainfall extends PApplet {
 
     }
 
+    float sum(float[] array) {
+        float sum = 0;
+        for (float r : array) {
+            sum += r;
+        }
+        return sum;
+    }
+
     void drawPieChart()
     {
+        float border = width * 0.1f;                
+        float sum = sum(rainfall);
+        float thetaPrev = 0;
         float cx = width / 2;
         float cy = height / 2;
-
-        float w = width * 0.8f;
-        //arc(cx, cy, w, w, 0, TWO_PI, ARC);
-
-        float total = 0;
-        colorMode(HSB);
-        for (int i = 0 ; i < months.length ; i ++)
+        for(int i = 0 ; i < rainfall.length ; i ++)
         {
-            float x = map(i, 0, months.length - 1, cy, width - cy);
-            line(x, height - cy, x, height - cy + 5);
+            float theta = map(rainfall[i], 0, sum, 0, TWO_PI);
+            textAlign(CENTER);
+            float thetaNext = thetaPrev + theta;
+            float radius = cx * 0.6f;       
+            float x = cx + sin(thetaPrev + (theta * 0.5f) + HALF_PI) * radius;      
+            float y = cy - cos(thetaPrev + (theta * 0.5f) + HALF_PI) * radius;
             fill(255);
-            float ty = height - (cy / 2);
-            text(months[i], x, ty);
+            text(months[i], x, y);             
+            float c = map(i, 0, rainfall.length, 0, 255);
+            fill(c, 255, 255);       
+            stroke(255);
+            arc(cx, cy, cx, cy, thetaPrev, thetaNext);
+            thetaPrev = thetaNext;
         }
-
-        for (int i = 0 ; i < rainfall.length ; i ++)
-        {
-            total += rainfall[i];
-        }
-
-        float runningSum = 0;
-        for (int i = 0 ; i < rainfall.length ; i ++)
-        {
-            float next = runningSum + rainfall[i];
-            float start = map(runningSum, 0, total, 0, TWO_PI);
-            float end = map(next, 0, total, 0, TWO_PI);
-            fill(map(i, 0, rainfall.length, 0, 255), 255, 255);
-            arc(cx, cy, w, w, start, end, ARC);
-            runningSum = next;
-    
-        }
+        fill(255);
+        text("Rainfall PieChart", width / 2, border / 2);
 
     }
 
