@@ -62,9 +62,15 @@ public class Main
         String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new Arrays());
     }
+
+    public void rainfall()
+    {
+        String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new Rainfall());
+    }
     public static void main(String[] args)
     {
         Main main = new Main();
-        main.arrays();
+        main.rainfall();
     }
 } 
