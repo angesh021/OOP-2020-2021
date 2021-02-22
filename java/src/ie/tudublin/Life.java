@@ -18,16 +18,17 @@ public class Life extends PApplet {
     public int countCellsAround(int row, int col)
     {
         int count = 0;
+        /*
          // For each column around the cell
-         for (int c = col - 1; c < col + 1; c++) {
+         for (int r = row - 1; r <= row + 1; r++) {
 
             // For each cell in the current column
-            for (int r = row - 1; r < row + 1; r++) {
+            for (int c = col - 1; c <= col + 1; c++) {
 
                 // If the cell is alive and not the specified row&col,
-                if (c != col && r != row)
+                if (r != row && c != col)
                 {
-                    if(getCell(board, row, col))
+                    if(getCell(board, r, c))
                     {
                         count++;
                     }
@@ -35,12 +36,47 @@ public class Life extends PApplet {
                 }
             }
         }
+        */
+        
+        if (getCell(board, row-1, col-1))
+        {
+            count ++;
+        }
+        if (getCell(board, row-1, col))
+        {
+            count ++;
+        }
+        if (getCell(board, row-1, col+1))
+        {
+            count ++;
+        }
+        if (getCell(board, row, col-1))
+        {
+            count ++;
+        }
+        if (getCell(board, row, col+1))
+        {
+            count ++;
+        }
+        if (getCell(board, row+1, col-1))
+        {
+            count ++;
+        }
+        if (getCell(board, row+1, col))
+        {
+            count ++;
+        }
+        if (getCell(board, row+1, col+1))
+        {
+            count ++;
+        }
+        
         return count;
     }
 
     public void setCell(boolean[][] board, int row, int col, boolean b)
     {
-        if (row > 0 && row < size -1 && col > 0 && col < size-1)
+        if (row >= 0 && row < size -1 && col >= 0 && col < size-1)
         {
             board[row][col]= b;
         }
@@ -49,7 +85,7 @@ public class Life extends PApplet {
 
     public boolean getCell(boolean[][] board, int row, int col)
     {
-        if (row > 0 && row < size -1 && col > 0 && col < size-1)
+        if (row >= 0 && row < size -1 && col >= 0 && col < size-1)
         {
             return board[row][col];
         }
